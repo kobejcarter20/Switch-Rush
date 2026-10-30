@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#070b19">
+  <title>Switch Rush — Neon Velocity</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main id="app" class="app">
+    <canvas id="gameCanvas" aria-label="Four-lane Switch Rush game"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header id="hud" class="hud hidden">
+      <div class="hud-top">
+        <div class="score-box"><span>SCORE</span><strong id="scoreText">0</strong></div>
+        <div class="score-box"><span>BEST</span><strong id="bestText">0</strong></div>
+        <div class="score-box"><span>COINS</span><strong id="coinText">0</strong></div>
+        <button class="icon-btn" id="pauseBtn" aria-label="Pause">Ⅱ</button>
+      </div>
+      <div class="rush-meta"><span>⚡ RUSH METER</span><b id="rushAmount">0%</b></div>
+      <div class="rush-track"><div id="rushFill" class="rush-fill"></div></div>
+      <div id="powerStatus" class="power-status"></div>
+    </header>
+    <div id="floatLayer" class="float-layer" aria-live="off"></div>
+
+    <section id="home" class="screen home">
+      <div class="home-top"><span class="mini-brand">S / R</span><button id="soundBtn" class="pill-btn">♫ ON</button></div>
+      <div class="hero">
+        <div class="eyebrow"><span class="live-dot"></span> NEON VELOCITY • ARCADE</div>
+        <div class="logo">SWITCH <em>RUSH</em></div>
+        <p class="tagline">FOUR LANES. ONE LIFE. INFINITE RUSH.</p>
+        <div class="hero-orb"><span class="hero-orb-inner"></span><span class="hero-ring"></span></div>
+        <button id="playBtn" class="cta">START RUN <span>▶</span></button>
+        <p class="hint">TAP LEFT OR RIGHT TO SWITCH LANES</p>
+      </div>
+      <div class="menu-grid">
+        <button data-screen="garage"><span>◉</span><b>GARAGE</b><small>Customize</small></button>
+        <button data-screen="shop"><span>◆</span><b>SHOP</b><small>Unlock gear</small></button>
+        <button data-screen="missions"><span>▤</span><b>MISSIONS</b><small>Daily rewards</small></button>
+        <button data-screen="boxes"><span>✦</span><b>BOXES</b><small>Mystery drops</small></button>
+        <button data-screen="leaderboard"><span>♛</span><b>RECORDS</b><small>Local rankings</small></button>
+      </div>
+      <div class="home-footer"><span id="homeBest">BEST 0</span><span id="homeWallet">◈ 0</span></div>
+    </section>
+
+    <section id="panel" class="screen panel hidden">
+      <div class="panel-head"><button id="backBtn" class="icon-btn">←</button><div><small>SWITCH RUSH</small><h2 id="panelTitle">GARAGE</h2></div><span id="panelWallet" class="wallet-pill">◈ 0</span></div>
+      <div id="panelContent" class="panel-scroll"></div>
+    </section>
+
+    <section id="pauseScreen" class="screen modal-screen hidden">
+      <div class="modal-card"><span class="eyebrow">TIME OUT</span><h2>PAUSED</h2><p>Your run is safe.</p><button id="resumeBtn" class="cta">RESUME ▶</button><button id="quitBtn" class="secondary-btn">END RUN</button></div>
+    </section>
+
+    <section id="results" class="screen modal-screen hidden">
+      <div class="modal-card"><span class="eyebrow">RUN COMPLETE</span><h2 class="game-over">GAME <em>OVER</em></h2>
+        <div class="result-score" id="resultScore">0</div><p id="resultMessage">Keep the momentum.</p>
+        <div class="result-stats"><div><small>BEST</small><strong id="resultBest">0</strong></div><div><small>COINS EARNED</small><strong id="resultCoins">0</strong></div><div><small>NEAR MISSES</small><strong id="resultNear">0</strong></div></div>
+        <div id="earnedBox" class="earned-box hidden">✦ NEW MYSTERY BOX UNLOCKED!</div>
+        <button id="againBtn" class="cta">RUN IT BACK ↻</button><button id="homeBtn" class="secondary-btn">MAIN MENU</button>
+      </div>
+    </section>
+    <div id="toast" class="toast hidden" role="status"></div>
+  </main>
+</body>
+</html>
